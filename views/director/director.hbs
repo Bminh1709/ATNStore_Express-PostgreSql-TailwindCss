@@ -1,0 +1,119 @@
+<div class="min-h-screen py-32">
+    <p class="text-MyYellow text-3xl font-semibold w-fit mx-auto mb-5">TOYS LIST</p>
+
+    <div class="w-11/12 lg:w-4/5 mx-auto flex justify-end">
+        <div class="">
+            <div class="dropdown relative">
+                <button class="border border-MyYellow text-white py-2 px-5 text-sm rounded-lg">
+                    <div class="flex gap-2">
+                        <span class="mr-1">Shop</span>
+                        <i class="fa-solid fa-sort-down"></i>
+                    </div>
+                </button>
+                <ul class="dropdown-menu hidden absolute text-gray-700 pt-1 z-20 right-0">
+                    {{#each shops}}
+                    <li class="dropdown-item"><button data-id="{{shopid}}" class="bg-white border-b border-MyPaleGray min-w-[98px] hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="#">{{username}}</button></li>
+                    {{/each}}
+                    <li class="dropdown-item"><button data-id="0" class="bg-white border-b border-MyPaleGray min-w-[98px] hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="#">All</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="relative overflow-x-auto w-11/12 lg:w-4/5 mx-auto rounded-t-lg mt-3">
+        <table class="w-full text-sm text-left">
+            <thead class="text-xs text-white uppercase bg-gray-700">
+                <tr class="">
+                    <th scope="col" class="px-6 py-3 whitespace-nowrap">
+                        Name
+                    </th>
+                    <th scope="col" class="hidden xl:block px-6 py-3 whitespace-nowrap">
+                        Description
+                    </th>
+                    <th scope="col" class="px-6 py-3 whitespace-nowrap">
+                        Price
+                    </th>
+                    <th scope="col" class="px-6 py-3 whitespace-nowrap">
+                        Origin
+                    </th>
+                    <th scope="col" class="px-6 py-3 whitespace-nowrap">
+                        Category
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="resultData">
+                {{#each toys}}
+                <tr class="border-b">
+                    <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                        {{toyname}}
+                    </th>
+                    <td class="px-6 py-4 hidden xl:block">
+                        {{description}}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${{price}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{origin}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{categoryname}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+
+    $('.dropdown-item').on('click', function () {
+        var dataId = $(this).find('button').data('id');
+        load_shops(dataId);
+    });
+
+    function load_shops(shopId) {
+        $.ajax({
+            url: '/director',
+            method: "POST",
+            data: { action: 'fetch', shopId: shopId},
+            success: function (data)
+            {
+                var html = '';
+
+                if(data.data.length > 0)
+                {
+                    for(var count = 0; count < data.data.length; count++)
+                    {
+                        html += `
+                        <<tr class="border-b">
+                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                `+ data.data[count].toyname +`
+                            </th>
+                            <td class="px-6 py-4 hidden xl:block">
+                                `+ data.data[count].description +`
+                            </td>
+                            <td class="px-6 py-4">
+                                `+ data.data[count].price +`
+                            </td>
+                            <td class="px-6 py-4">
+                                `+ data.data[count].origin +`
+                            </td>
+                            <td class="px-6 py-4">
+                                `+ data.data[count].categoryname +`
+                            </td>
+                        </tr>
+                        `;
+                    }
+                }
+
+                $('#resultData').html(html);
+
+            }
+        });
+    }
+    });
+</script>

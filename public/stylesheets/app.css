@@ -1,0 +1,65 @@
+html {
+    scroll-behavior: smooth;
+    background-color: #101010;
+    color: white;
+    font-family: 'Montserrat', sans-serif !important;
+}
+.title {
+    color: #FFCC00;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+.title-nobotton {
+    color: #FFCC00;
+    font-weight: 700;
+    font-size: 20px;
+}
+.btn-hover {
+    border: 2px solid #FFCC00;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    width: fit-content;
+}
+.btn-hover:hover {
+    background-color: #FFCC00;
+    color: #101010;
+    font-weight: 700;
+}
+.border-bottom {
+    border-bottom: 1px solid #D2D2D2;
+}
+.responsive-navbar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+.nav__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+.checkbox-navbar:checked ~ .nav__overlay {
+    display: block;
+}
+.checkbox-navbar:checked ~ .responsive-navbar {
+    transform: translateX(0);
+}
+
+.checkbox-upsertForm:checked ~ .nav__overlay {
+    display: block;
+}
+.checkbox-upsertForm:checked ~ .upsertLayout {
+    display: block;
+}
+.active {
+    background-color: #FFCC00;
+    color: #101010;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+  }

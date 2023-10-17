@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+    <div class="border-bottom fixed w-full overflow-hidden top-0 z-10 bg-MyBlack">
+        <div class="flex items-center justify-between py-5 w-5/6 mx-auto">
+            <a href="/"><p class="font-semibold text-MyYellow text-xl">ATN Store</p></a>
+            <div class="hidden md:flex gap-4 items-center">
+                <div class="flex gap-4 font-light text-sm">
+                    <a href="/admin" class="hover:text-MyYellow">Home</a>
+                </div>
+                <div class="font-thin">|</div>
+                <div class="flex gap-4 text-sm">
+                    <a href="/access/logout" class="hover:text-MyYellow">Logout</a>
+                </div>
+            </div>
+            <!-- Responsive navbar -->
+            <input hidden type="checkbox" id="mobile-navbar" class="checkbox-navbar">
+            <label class="block md:hidden" for="mobile-navbar"><i class="fa-solid fa-bars text-2xl"></i></label>
+            <label for="mobile-navbar" class="nav__overlay"></label>
+
+            <div class="responsive-navbar fixed top-0 flex flex-col gap-8 px-10 py-14 bg-MyBlack w-3/4 h-full left-0 text-xl text-center">
+                <a href="/"><p class="font-semibold text-MyYellow text-xl">ATN Store</p></a>
+                <div class="bg-MyPaleGray opacity-50 w-full h-0.5"></div>
+                <a href="/admin" class="hover:text-MyYellow">Home</a>
+                <a href="/access/logout" class="hover:text-MyYellow">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+      {{{body}}}
+    </div>
+
+    <div class="py-3 text-center border-t border-MyPaleGray">
+        <p class="text-xs">Old portfolio: <a href="https://minhportfolio.onrender.com/" target="_blank" class="text-MyYellow">Click here to explore</a></p>
+        <p class="text-xs mt-1">This website is inspired by Mr. Hieu Nguyen's site</p>
+    </div>
+
+</body>
+</html>

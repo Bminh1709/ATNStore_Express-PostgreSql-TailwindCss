@@ -1,0 +1,64 @@
+<div class="min-h-screen py-32">
+
+<div class="grid grid-cols-2 gap-14 w-4/5 mx-auto">
+    <div class="">
+        <p class="text-MyYellow text-3xl font-semibold w-fit mx-auto mb-10">USERS LIST</p>
+        <div class="relative overflow-x-auto w-full rounded-t-lg">
+            <table class="w-full text-sm text-left">
+                <thead class="text-xs text-white uppercase bg-gray-700">
+                    <tr class="">
+                        <th scope="col" class="px-6 py-3 whitespace-nowrap">
+                            Id
+                        </th>
+                        <th scope="col" class="hidden xl:block px-6 py-3 whitespace-nowrap">
+                            Username
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                    <tr class="border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                            {{userid}}
+                        </th>
+                        <td class="px-6 py-4 hidden xl:block">
+                            {{username}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="">
+        <p class="text-MyYellow text-3xl font-semibold w-fit mx-auto mb-10">SHOPS LIST</p>
+        <div class="relative overflow-x-auto w-full rounded-t-lg">
+            <table class="w-full text-sm text-left">
+                <thead class="text-xs text-white uppercase bg-gray-700">
+                    <tr class="">
+                        <th scope="col" class="px-6 py-3 whitespace-nowrap">
+                            Id
+                        </th>
+                        <th scope="col" class="hidden xl:block px-6 py-3 whitespace-nowrap">
+                            Shop name
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each shops}}
+                    <tr class="border-b">
+                        <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                            {{shopid}}
+                        </th>
+                        <td class="px-6 py-4 hidden xl:block">
+                            {{username}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>

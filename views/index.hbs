@@ -1,0 +1,62 @@
+    <div class="text-center py-14 border-bottom mt-[68px]">
+        <div class="w-11/12 mx-auto">
+            <p class="text-MyYellow text-3xl font-bold mb-2">THE MOST REPUTABLE TOY STORE</p>
+            <P class="w-3/4 mx-auto">Welcome to my toy store, where imagination comes to life! Explore a world of wonder and delight as you discover a treasure trove of toys that will bring joy to children of all ages. From classic favorites to the latest innovations, we have something for every child's dream. Come and experience the enchantment at ATN today!</P>
+            <a href="#assingment" class="px-3 py-2 rounded-full mt-4 btn-hover">Explore More</a>
+        </div>
+    </div>
+
+    <div class="border-bottom py-24 bg-MyGray" id="assingment">
+        <div class="w-11/12 xl:w-5/6 mx-auto text-center">
+            <p class="title">ENTER THE TOY NAME OR RELATED KEYWORDS</p>
+            <form id="formFilter" action="" class="h-10 w-fit mx-auto gap-0 flex my-5">
+                <div class="relative">
+                    <input type="text" id="inputFilter" name="filter" class="h-full outline-none rounded-l-md min-w-4/5 sm:w-[400px] text-black p-3">
+                    <i id="btnDeleteFilter" class="fa-solid fa-x absolute text-sm top-[13px] right-3 text-MyPaleGray hover:text-MyBlack hover:cursor-pointer"></i>
+                </div>
+                <button type="submit" class="bg-MyYellow h-full w-10 rounded-r-md hover:bg-MyPaleGray"><i class="fa-solid fa-magnifying-glass text-black"></i></button>
+            </form>
+            <div class="flex gap-3 mx-auto w-fit mb-5 flex-wrap">
+                <button data-id="1" class="btnCategory border border-MyYellow p-3 text-xs hover:bg-MyYellow hover:text-MyBlack">For Boys</button>
+                <button data-id="2" class="btnCategory border border-MyYellow p-3 text-xs hover:bg-MyYellow hover:text-MyBlack">For Girls</button>
+                <button data-id="4" class="btnCategory border border-MyYellow p-3 text-xs hover:bg-MyYellow hover:text-MyBlack">For Both</button>
+                <button class="btnCategory border border-MyYellow p-3 text-xs hover:bg-MyYellow hover:text-MyBlack">All</button>
+            </div>
+            <div id="resultData" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 my-10">
+                {{!-- Data of toys would show here --}}
+            </div>    
+            <a href="#instruction" class="px-5 py-2 rounded-full btn-hover">I wanna buy</a>  
+        </div>
+    </div>
+
+    <div class="border-bottom py-24" id="instruction">
+        <div class="w-11/12 xl:w-5/6 mx-auto text-center">
+            <p class="title">SHOPPING GUIDE</p>
+            <p class="w-3/4 mx-auto">Please read the instructions carefully. If you are in a difficult situation, I will send it to you for free. Contact me through form I put below. Thanks for being here!</p>
+            <div class="flex flex-col lg:flex-row gap-10 items-center justify-around my-14 h-fit">
+                <div class="bg-MyGray p-8 lg:p-5 xl:p-8 rounded w-[300px] sm:w-[350px] max-h-fit lg:min-h-[320px]">
+                    <i class="fa-solid fa-eye text-MyYellow text-4xl"></i>
+                    <p class="text-MyYellow font-semibold mt-4 mb-2">SEARCHING</p>
+                    <p class="text-sm leading-6">First, you need to search for a suitable toy and take a look at some of the information the toy has such as the price, origin, and its visual</p>
+                </div>
+                <div class="hidden lg:block text-4xl text-MyYellow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="block lg:hidden text-4xl text-MyYellow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="bg-MyGray p-8 lg:p-5 xl:p-8 rounded w-[300px] sm:w-[350px] max-h-fit lg:min-h-[320px]">
+                    <i class="fa-solid fa-money-check-dollar text-MyYellow text-4xl"></i>
+                    <p class="text-MyYellow font-semibold mt-4 mb-2">BANKING</p>
+                    <p class="text-sm leading-6">After finding a suitable toy,<br>you send the money via<br>Bank: MB Bank<br>Account number: 117092003<br>Name: Bui Quang Minh<br>Content: [Toyname][Address]</p>
+                </div>
+                <div class="hidden lg:block text-4xl text-MyYellow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="block lg:hidden text-4xl text-MyYellow"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="bg-MyGray p-8 lg:p-5 xl:p-8 rounded w-[300px] sm:w-[350px] max-h-fit lg:min-h-[320px]">
+                    <i class="fa-solid fa-envelope-open-text text-MyYellow text-4xl"></i>
+                    <p class="text-MyYellow font-semibold mt-4 mb-2">CHECKING MAIL</p>
+                    <p class="text-sm leading-6">After successfully sending money, please wait about 5 to 7 days, then your order will be sent to your home</p>
+                </div>
+            </div>    
+            <button class="px-7 py-3 rounded border border-MyYellow text-xs">Contact 0706162561 if you meet any problems</button>  
+        </div>
+    </div>
+
+
+    <script src="/javascripts/index.js"></script>

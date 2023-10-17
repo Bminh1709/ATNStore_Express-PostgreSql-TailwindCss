@@ -1,0 +1,55 @@
+    <div class="py-32 border-b border-MyPaleGray min-h-screen">
+        <p class="text-3xl font-semibold text-MyYellow w-fit mb-7 mx-auto">ADD TOY</p>
+        <form action="" method="post" enctype="multipart/form-data" class="flex flex-col gap-4 w-5/6 md:w-1/2 xl:w-1/3 mx-auto">
+            <div class="flex flex-col gap-2 w-full">
+                <label for="">Name</label>
+                <input required type="text" name="toyname" class="h-12 py-3 px-4 rounded-sm outline-none text-MyBlack">
+            </div>
+            <div class="flex flex-col gap-2 w-full">
+                <label for="">Description</label>
+                <textarea required name="description" id="" rows="5" class="py-3 px-4 rounded-sm outline-none text-MyBlack"></textarea>
+            </div>
+            <div class="flex flex-col gap-2 w-full">
+                <label for="">Price</label>
+                <input required type="number" name="price" min="0" class="outline-none py-3 px-4 text-MyBlack rounded-sm">
+            </div>
+            <div class="flex flex-col gap-2 w-full">
+                <label for="">Origin</label>
+                <input required type="text" name="origin" class="h-12 py-3 px-4 rounded-sm outline-none text-MyBlack">
+            </div>
+            <div class="flex flex-col gap-2 w-full">
+                <label for="">Category</label>
+                <div class="bg-white px-4 rounded-sm">
+                    <select name="category_id" id="" class="py-3 outline-none text-MyBlack w-full">
+                        {{#each categories}}
+                        <option value="{{categoryid}}">{{categoryname}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="mt-5">
+                <img id="inputToyImg" src="/images/system/no-photo-available.png" alt="" class="w-full h-[220px] rounded object-cover">
+            </div>
+            <div class="flex gap-4 mt-10 w-fit mx-auto">
+                <input required type="file" hidden id="fileChosen" name="image" accept="image/*"> 
+                <label for="fileChosen" class="py-2 px-5 border border-MyYellow rounded hover:bg-MyYellow hover:text-MyBlack">Chọn ảnh</label>
+                <input type="submit" value="Thêm" class="py-2 px-5 border border-MyYellow rounded hover:bg-MyYellow hover:text-MyBlack">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('body').on('change', '#fileChosen', function () {
+                const file = this.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function(event) {
+                        $('#inputToyImg').attr('src', event.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+    </script>
