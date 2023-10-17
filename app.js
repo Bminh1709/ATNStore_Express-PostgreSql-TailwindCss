@@ -10,7 +10,6 @@ var indexRouter = require('./routes/index');
 var aboutRouter = require('./routes/about');
 var shopRouter = require('./routes/shop');
 var accessRouter = require('./routes/access');
-var userRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 var directorRouter = require('./routes/director');
 
@@ -49,7 +48,6 @@ app.use('/', indexRouter);
 app.use('/shop', shopRouter);
 app.use('/about', aboutRouter);
 app.use('/access', accessRouter);
-app.use('/user', userRouter);
 app.use('/admin', adminRouter);
 app.use('/director', directorRouter);
 

@@ -1,9 +1,9 @@
-function requireAuthAdmin(req, res, next) {
-    if (req.session.admin) {
-      next();
-    } else {
-      res.redirect('/access/user');
-    }
+function requireAdmin(req, res, next) {
+  if (req.session.user && req.session.role === 'admin') {
+    next(); // Allow access for admin
+  } else {
+    res.redirect('/access/user'); // Redirect to the user login page
   }
-  
-  module.exports = requireAuthAdmin;
+}
+
+module.exports = requireAdmin;

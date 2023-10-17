@@ -44,16 +44,16 @@ $(document).ready(function(){
                         <div class="bg-MyBlack border border-MyPaleGray rounded p-6 text-left flex flex-col justify-between gap-5">
                             <div class="flex flex-col justify-between h-full">
                                 <div>
-                                    <p class="font-semibold text-MyYellow">`+ data.data[count].toyname +`</p>
+                                    <p class="font-semibold text-MyYellow mb-1">`+ data.data[count].toyname +`</p>
                                     <p class="text-sm">`+ data.data[count].description +`</p>
                                 </div>
                                 <div>
-                                    <img src="/images/toy/`+ data.data[count].image +`" alt="" class="rounded mt-7 object-cover w-full h-[220px]">
+                                    <img src="/images/toy/`+ data.data[count].image +`" alt="" class="rounded mt-4 object-cover w-full h-[220px]">
                                 </div>
                             </div>
                             <div class="w-full h-0.5 bg-white opacity-10"></div>
                             <div class="flex justify-between">
-                                <div>
+                                <div class="text-sm">
                                     <p class="">Price:<span class="text-MyYellow ml-2">$`+ data.data[count].price +`</span></p>
                                     <p class="">Origin:<span class="text-MyYellow ml-2">`+ data.data[count].origin +`</span></p>
                                 </div>
