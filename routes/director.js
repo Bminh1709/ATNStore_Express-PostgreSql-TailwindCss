@@ -4,7 +4,7 @@ const model = require('../models/directorModel');
 const requireAuthDirector = require('../helpers/checkAuthDirector');
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get('/', requireAuthDirector,  async function(req, res, next) {
     const shops = await model.getShops();
     const toys = await model.getToys();
     res.render('director/director', { title: 'Director', layout: 'layoutdirector', toys: toys, shops: shops });
@@ -17,7 +17,6 @@ router.post('/', async function(req, res, next) {
         if (shopId == 0)
         {
             toys = await model.getToys();
-            console.log(toys);
         }
         else
         {
@@ -27,6 +26,33 @@ router.post('/', async function(req, res, next) {
           data: toys
         });
       }
+});
+
+router.get('/refresh', requireAuthDirector, async function(req, res, next) {
+    try {
+        res.json({
+            data: req.session.refreshTime
+        });
+    } catch (error) {
+        res.redirect('/error');
+    }
+});
+
+router.post('/refresh', async function(req, res, next) {
+    try {
+        const timeSet = req.body.timeSet;
+        if (timeSet == 1)
+            req.session.refreshTime = 300000;
+        else if (timeSet == 2)
+            req.session.refreshTime = 900000;
+        else if (timeSet == 3)
+            req.session.refreshTime = 1800000;
+        res.json({
+            data: req.session.refreshTime
+        });
+    } catch (error) {
+        res.redirect('/error');
+    }
 });
 
 

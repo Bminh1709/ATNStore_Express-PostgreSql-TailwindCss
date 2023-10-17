@@ -25,8 +25,11 @@
                 </div>
                 <div class="font-thin">|</div>
                 <div class="flex gap-4 text-sm">
-                    <a href="/access/user" class="hover:text-MyYellow">Sign In</a>
-                    <a href="/access/logout" class="hover:text-MyYellow">Sign Out</a>
+                    {{#if status}}
+                        <a href="/access/logout" class="hover:text-MyYellow">Sign Out</a>
+                    {{else}}
+                        <a href="/access/user" class="hover:text-MyYellow">Sign In</a>
+                    {{/if}}
                     <a href="/shop" class="hover:text-MyYellow">Shop</a>
                 </div>
             </div>

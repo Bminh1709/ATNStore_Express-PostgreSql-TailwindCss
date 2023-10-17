@@ -1,8 +1,20 @@
 <div class="min-h-screen py-32">
     <p class="text-MyYellow text-3xl font-semibold w-fit mx-auto mb-5">TOYS LIST</p>
 
-    <div class="w-11/12 lg:w-4/5 mx-auto flex justify-end">
-        <div class="">
+    <div class="w-11/12 lg:w-4/5 mx-auto flex justify-between">
+            <div class="dropdown relative">
+                <button class="border border-MyYellow text-white py-2 px-5 text-sm rounded-lg">
+                    <div class="flex gap-2">
+                        <span class="mr-1">Refresh</span>
+                        <i class="fa-solid fa-sort-down"></i>
+                    </div>
+                </button>
+                <ul class="dropdown-menu hidden absolute text-gray-700 pt-1 z-20 left-0">
+                    <li class="dropdown-refresh-item"><button data-id="1" class="whitespace-nowrap w-full bg-white border-b border-MyPaleGray min-w-[98px] hover:bg-gray-300 py-2 px-3 block" href="#">5 minutes</button></li>
+                    <li class="dropdown-refresh-item"><button data-id="2" class="whitespace-nowrap w-full bg-white border-b border-MyPaleGray min-w-[98px] hover:bg-gray-300 py-2 px-3 block" href="#">30 minutes</button></li>
+                    <li class="dropdown-refresh-item"><button data-id="3" class="whitespace-nowrap w-full bg-white border-b border-MyPaleGray min-w-[98px] hover:bg-gray-300 py-2 px-3 block" href="#">1 hours</button></li>
+                </ul>
+            </div>
             <div class="dropdown relative">
                 <button class="border border-MyYellow text-white py-2 px-5 text-sm rounded-lg">
                     <div class="flex gap-2">
@@ -12,12 +24,11 @@
                 </button>
                 <ul class="dropdown-menu hidden absolute text-gray-700 pt-1 z-20 right-0">
                     {{#each shops}}
-                    <li class="dropdown-item"><button data-id="{{shopid}}" class="bg-white border-b border-MyPaleGray min-w-[98px] hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="#">{{username}}</button></li>
+                    <li class="dropdown-item"><button data-id="{{shopid}}" class="bg-white w-full border-b border-MyPaleGray min-w-[98px] hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="#">{{username}}</button></li>
                     {{/each}}
-                    <li class="dropdown-item"><button data-id="0" class="bg-white border-b border-MyPaleGray min-w-[98px] hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="#">All</button></li>
+                    <li class="dropdown-item"><button data-id="0" class="bg-white border-b w-full border-MyPaleGray min-w-[98px] hover:bg-gray-300 py-2 px-4 block whitespace-no-wrap" href="#">All</button></li>
                 </ul>
             </div>
-        </div>
     </div>
 
     <div class="relative overflow-x-auto w-11/12 lg:w-4/5 mx-auto rounded-t-lg mt-3">
@@ -67,53 +78,4 @@
 </div>
 
 
-<script>
-    $(document).ready(function(){
-
-    $('.dropdown-item').on('click', function () {
-        var dataId = $(this).find('button').data('id');
-        load_shops(dataId);
-    });
-
-    function load_shops(shopId) {
-        $.ajax({
-            url: '/director',
-            method: "POST",
-            data: { action: 'fetch', shopId: shopId},
-            success: function (data)
-            {
-                var html = '';
-
-                if(data.data.length > 0)
-                {
-                    for(var count = 0; count < data.data.length; count++)
-                    {
-                        html += `
-                        <<tr class="border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                                `+ data.data[count].toyname +`
-                            </th>
-                            <td class="px-6 py-4 hidden xl:block">
-                                `+ data.data[count].description +`
-                            </td>
-                            <td class="px-6 py-4">
-                                `+ data.data[count].price +`
-                            </td>
-                            <td class="px-6 py-4">
-                                `+ data.data[count].origin +`
-                            </td>
-                            <td class="px-6 py-4">
-                                `+ data.data[count].categoryname +`
-                            </td>
-                        </tr>
-                        `;
-                    }
-                }
-
-                $('#resultData').html(html);
-
-            }
-        });
-    }
-    });
-</script>
+<script src="/javascripts/director.js"></script>

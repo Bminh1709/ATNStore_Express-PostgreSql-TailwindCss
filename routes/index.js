@@ -4,7 +4,12 @@ const model = require('../models/toyModel');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  res.render('index', { title: 'Home' });
+  let status = false;
+  if (req.session.user != undefined && req.session.user != null || req.session.shop != null)
+  {
+    status = true;
+  }
+  res.render('index', { title: 'Home', status: status });
 });
 
 router.post('/', async function(req, res, next) {

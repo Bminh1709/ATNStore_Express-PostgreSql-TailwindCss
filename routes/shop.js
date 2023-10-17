@@ -72,7 +72,6 @@ router.post('/delete', async (req, res) => {
     });
     res.json({ success: true });
   } catch (error) {
-    console.error(error);
     res.json({ success: false });
   }
 });
@@ -111,7 +110,6 @@ router.post('/update', upload.single('image'), async (req, res) => {
     else
       res.json({ success: false });
   } catch (error) {
-    console.log(error);
     res.json({ success: false });
   }
 });

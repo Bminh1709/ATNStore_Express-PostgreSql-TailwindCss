@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 const model = require('../models/authModel'); 
 const multer = require('multer');
-const upload = multer(); // Initialize multer
+const upload = multer();
+const db = require('../databasebg'); 
 
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-    if (req.session && req.session.shop) {
-        res.redirect('/shop');
+    if (req.session && req.session.shop || req.session.user) {
+        res.redirect('/');
     }
     else {
         res.render('shop/access', { 
@@ -32,19 +33,18 @@ router.post('/', upload.none(), async (req, res) => {
             res.json({ success: false });
         }
     } catch (error) {
-        console.log(error);
         res.redirect('/error');
     }
 });
 
 // Access for user
 router.get('/user', function(req, res) {
-    if (req.session && req.session.user) {
+    if (req.session && req.session.user || req.session.shop) {
         res.redirect('/');
     }
     else {
         res.render('user/login', { 
-            title: 'Sign In'});
+        title: 'Sign In'});
     }
 });
 router.post('/user', upload.none(), async (req, res) => {
@@ -59,33 +59,30 @@ router.post('/user', upload.none(), async (req, res) => {
             if (getAccount.rolename === 'director')
             {
                 req.session.user = true;
-                req.session.director = getAccount;
+                req.session.role = 'director';
                 res.json({ success: true, data: 1 });
             }
             else if (getAccount.rolename === 'admin')
             {
                 req.session.user = true;
-                req.session.admin = getAccount;
+                req.session.role = 'admin';
                 res.json({ success: true, data: 2 });
             }
             else
             {
                 req.session.user = true;
-                req.session.client = getAccount;
-                console.log(req.session.client);
                 res.json({ success: true });
             }
         } else {
             res.json({ success: false });
         }
     } catch (error) {
-        console.log(error);
         res.redirect('/error');
     }
 });
 
 router.get('/logout', async (req, res) => {
-    if (req.session && req.session.shop || req.session.admin || req.session.director || req.session.client)
+    if (req.session && req.session.user || req.session.shop)
     {
         req.session.destroy();
         res.redirect('/');
