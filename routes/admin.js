@@ -10,14 +10,5 @@ router.get('/', requireAuthAdmin, async function(req, res, next) {
     res.render('admin/admin', { title: 'Admin', layout: 'layoutadmin', users: users, shops: shops });
 });
 
-router.post('/', async function(req, res, next) {
-  if (req.body.action === 'fetch') {
-    const toys = await model.getToysWithFilter(req.body.filter, req.body.category);
-    res.json({
-      data: toys
-    });
-  }
-});
-
 
 module.exports = router;
