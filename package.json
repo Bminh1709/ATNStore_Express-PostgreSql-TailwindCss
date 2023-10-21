@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm run tailwind:css\" \"nodemon app.js\"",
-    "tailwind:css": "npx tailwindcss -i public/stylesheets/tailwind.css -o public/stylesheets/style.css --watch"
+    "start": "npx tailwindcss -i public/stylesheets/tailwind.css -o public/stylesheets/style.css --watch"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
