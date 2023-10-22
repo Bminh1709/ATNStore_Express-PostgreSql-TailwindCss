@@ -8,7 +8,7 @@ const {Client} = require('pg')
 //     database: "atnstore"
 // });
 const client = new Client({
-    connectionString: 'postgres://atn_user:6TQrd8ITsFjFabZ7DwcZmA1K8lGrvJ7x@dpg-ckoin4s1tcps7394563g-a.oregon-postgres.render.com/atn?ssl=true',
+    connectionString: 'postgres://atn_user:6TQrd8ITsFjFabZ7DwcZmA1K8lGrvJ7x@dpg-ckoin4s1tcps7394563g-a/atn?ssl=true',
 });
 
 client.connect()
