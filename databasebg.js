@@ -9,6 +9,7 @@ const {Client} = require('pg')
 // });
 const client = new Client({
     connectionString: 'postgres://atn_user:6TQrd8ITsFjFabZ7DwcZmA1K8lGrvJ7x@dpg-ckoin4s1tcps7394563g-a/atn?ssl=true',
+    ssl: { rejectUnauthorized: false }
 });
 
 client.connect()
